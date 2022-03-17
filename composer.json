@@ -2,6 +2,7 @@
   "name": "liuv/larapix",
   "description": "OpenPix Laravel SDK",
   "type": "library",
+  "license": "MIT",
   "authors": [
     {
       "name": "danielhe4rt",
@@ -9,7 +10,8 @@
     }
   ],
   "require": {
-    "guzzlehttp/guzzle": "6.5.5"
+    "guzzlehttp/guzzle": "6.5.5",
+    "ext-json": "*"
   },
   "config": {
     "sort-packages": true
