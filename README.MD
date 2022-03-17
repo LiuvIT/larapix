@@ -33,7 +33,7 @@ sugestão!
 
 ## Installing Larapix
 
-Recomendamos você instalar o Guzzle pelo [Composer](https://getcomposer.org/).
+Recomendamos você instalar o Larapix pelo [Composer](https://getcomposer.org/).
 
 ```bash
 composer require liuv/larapix
