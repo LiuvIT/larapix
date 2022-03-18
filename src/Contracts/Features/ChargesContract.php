@@ -11,6 +11,4 @@ interface ChargesContract
     public function findAll(array $params = []): array;
 
     public function create(Charge $charge): array;
-
-    public function generateQrCode(string $chargeId): string;
 }
