@@ -11,6 +11,7 @@ use Liuv\Larapix\ValueObjects\Charge;
 
 class ChargesService implements ChargesContract
 {
+    const API_URL = 'https://api.openpix.com.br/api/openpix/v1/charge/';
     /**
      * @var Client
      */
@@ -24,7 +25,7 @@ class ChargesService implements ChargesContract
 
     public function findById(string $id): array
     {
-        $uri = 'https://api.openpix.com.br/api/openpix/v1/charge/' . $id;
+        $uri = self::API_URL . $id;
         try {
             $response = $this->client->get($uri);
         } catch (ClientException $exception) {
@@ -39,19 +40,17 @@ class ChargesService implements ChargesContract
 
     public function findAll(array $params = []): array
     {
-        $uri = 'https://api.openpix.com.br/api/openpix/v1/charge/';
 
-        $response = $this->client->get($uri);
+        $response = $this->client->get( self::API_URL);
 
         return json_decode($response->getBody(), true);
     }
 
     public function create(Charge $charge): array
     {
-        $uri = 'https://api.openpix.com.br/api/openpix/v1/charge';
 
         try {
-            $response = $this->client->post($uri, [
+            $response = $this->client->post( self::API_URL, [
                 'headers' => [
                     'Content-Type' => 'application/json',
                     'Accept' => 'application/json',
@@ -72,7 +71,7 @@ class ChargesService implements ChargesContract
     public function generateQrCode(string $chargeId): string
     {
         $uri = sprintf(
-            'https://api.openpix.com.br/openpix/charge/brcode/image/%s.png?size=1024',
+            self::API_URL.'brcode/image/%s.png?size=1024',
             $chargeId
         );
         var_dump($uri);
