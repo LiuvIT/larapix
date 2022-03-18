@@ -73,20 +73,6 @@ class ChargesServiceTest extends TestCase
         $this->assertEquals($this->expectedCreatedChargeObject(), $actual);
     }
 
-    public function test_charge_qr_code_creation()
-    {
-        $mock = new MockHandler([new Response(200, [], 'qrcodeboladao')]);
-        $handlerStack = HandlerStack::create($mock);
-        $client = new Client(['handler' => $handlerStack]);
-        $this->service = new ChargesService($client);
-        $chargeId = 'artur-me-da-um-aumento';
-        // Act
-        $actual = $this->service->generateQrCode($chargeId);
-
-        // Assert
-        $this->assertEquals('qrcodeboladao', $actual);
-    }
-
     public function expectedFetchObject(): array
     {
         return [
