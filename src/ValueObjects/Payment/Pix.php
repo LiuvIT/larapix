@@ -3,6 +3,7 @@
 namespace Liuv\Larapix\ValueObjects\Payment;
 
 use JsonSerializable;
+use Liuv\Larapix\Exceptions\PaymentMethodNotAcceptedException;
 
 class Pix implements JsonSerializable
 {
@@ -41,8 +42,10 @@ class Pix implements JsonSerializable
     private function validateKeyTypes(string $pixKeyType)
     {
         if (!in_array(strtolower($pixKeyType), $this->availableKeyTypes)) {
-            // TODO: Pix type exception???
-            throw new \Exception('pensar no que colocar aqui');
+            throw new PaymentMethodNotAcceptedException(sprintf(
+                'Supported methods: %s.',
+                implode(',', $this->availableKeyTypes)
+            ));
         }
     }
 }
