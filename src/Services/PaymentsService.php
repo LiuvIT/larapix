@@ -52,7 +52,7 @@ class PaymentsService implements PaymentsContract
 
     public function confirmPayment(string $paymentCorrelationId): array
     {
-        $uri = self::BASE_API . '/qrcode';
+        $uri = self::BASE_API . '/confirm';
         $response = $this->client->post($uri, [
             'headers' => [
                 'Content-Type' => 'application/json',
