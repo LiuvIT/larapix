@@ -4,6 +4,7 @@ namespace Liuv\Larapix;
 
 use GuzzleHttp\Client;
 use Illuminate\Support\ServiceProvider;
+use Liuv\Larapix\Contracts\LarapixContract;
 
 class LarapixServiceProvider extends ServiceProvider
 {
@@ -16,7 +17,7 @@ class LarapixServiceProvider extends ServiceProvider
 
     public function register()
     {
-        $this->app->singleton(LarapixService::class, function () {
+        $this->app->bind(LarapixContract::class, function () {
             $client = new Client([
                 'base_uri' => config('larapix.base_url'),
                 'headers' => [
