@@ -4,8 +4,10 @@ namespace Liuv\Larapix;
 
 use GuzzleHttp\Client;
 use Liuv\Larapix\Contracts\Features\ChargesContract;
+use Liuv\Larapix\Contracts\Features\RefundsContract;
 use Liuv\Larapix\Contracts\LarapixContract;
 use Liuv\Larapix\Services\ChargesService;
+use Liuv\Larapix\Services\RefundsService;
 
 class LarapixService implements LarapixContract
 {
@@ -22,5 +24,10 @@ class LarapixService implements LarapixContract
     public function charges(): ChargesContract
     {
         return new ChargesService($this->client);
+    }
+
+    public function refunds(): RefundsContract
+    {
+        return new RefundsService($this->client);
     }
 }
