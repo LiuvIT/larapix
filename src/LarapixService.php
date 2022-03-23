@@ -6,10 +6,12 @@ use GuzzleHttp\Client;
 use Liuv\Larapix\Contracts\Features\ChargesContract;
 use Liuv\Larapix\Contracts\Features\PaymentsContract;
 use Liuv\Larapix\Contracts\Features\RefundsContract;
+use Liuv\Larapix\Contracts\Features\TransactionContract;
 use Liuv\Larapix\Contracts\LarapixContract;
 use Liuv\Larapix\Services\ChargesService;
 use Liuv\Larapix\Services\PaymentsService;
 use Liuv\Larapix\Services\RefundsService;
+use Liuv\Larapix\Services\TransactionsService;
 
 class LarapixService implements LarapixContract
 {
@@ -36,5 +38,10 @@ class LarapixService implements LarapixContract
     public function payments(): PaymentsContract
     {
         return new PaymentsService($this->client);
+    }
+
+    public function transactions(): TransactionContract
+    {
+        return new TransactionsService($this->client);
     }
 }

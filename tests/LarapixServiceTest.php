@@ -7,6 +7,7 @@ use GuzzleHttp\ClientInterface;
 use Liuv\Larapix\Contracts\Features\ChargesContract;
 use Liuv\Larapix\Contracts\Features\PaymentsContract;
 use Liuv\Larapix\Contracts\Features\RefundsContract;
+use Liuv\Larapix\Contracts\Features\TransactionContract;
 use Liuv\Larapix\Contracts\LarapixContract;
 use Liuv\Larapix\LarapixService;
 use PHPUnit\Framework\TestCase;
@@ -42,5 +43,11 @@ class LarapixServiceTest extends TestCase
     {
         $this->assertInstanceOf(LarapixContract::class, $this->service);
         $this->assertInstanceOf(PaymentsContract::class, $this->service->payments());
+    }
+
+    public function test_larapix_transactions_function()
+    {
+        $this->assertInstanceOf(LarapixContract::class, $this->service);
+        $this->assertInstanceOf(TransactionContract::class, $this->service->transactions());
     }
 }
