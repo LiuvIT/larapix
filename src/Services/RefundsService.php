@@ -9,7 +9,6 @@ use Liuv\Larapix\ValueObjects\Refund;
 
 class RefundsService implements RefundsContract
 {
-
     const BASE_API = 'https://api.openpix.com.br/api/openpix/v1';
 
     private $client;
@@ -40,7 +39,7 @@ class RefundsService implements RefundsContract
 
     public function create(Refund $refund): array
     {
-        
+
         $uri = self::BASE_API . '/refund';
         $response = $this->client->post($uri, [
             'headers' => [

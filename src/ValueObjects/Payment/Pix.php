@@ -19,9 +19,8 @@ class Pix implements JsonSerializable
         string $correlationId,
         string $pixKey,
         string $pixKeyType,
-        int    $value
-    )
-    {
+        int $value
+    ) {
         $this->validateKeyTypes($pixKeyType);
         $this->correlationId = $correlationId;
         $this->pixKey = $pixKey;

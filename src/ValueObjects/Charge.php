@@ -2,7 +2,6 @@
 
 namespace Liuv\Larapix\ValueObjects;
 
-
 class Charge implements \JsonSerializable
 {
     /**
@@ -36,14 +35,13 @@ class Charge implements \JsonSerializable
 
     public function __construct(
         string $correlationId,
-        int    $value,
+        int $value,
         Customer $customer = null,
         string $comment = '',
         string $identifier = '',
         int $expiresIn = 900,
         array $additionalInfo = []
-    )
-    {
+    ) {
         $this->corretionId = $correlationId;
         $this->value = $value;
         $this->customer = $customer ?? new Customer();

@@ -6,7 +6,6 @@ use Liuv\Larapix\ValueObjects\Refund;
 
 interface RefundsContract
 {
-
     public function findById(string $refundId): array;
 
     public function findAll(array $parameters = []): array;

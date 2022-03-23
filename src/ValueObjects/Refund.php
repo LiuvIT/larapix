@@ -2,7 +2,6 @@
 
 namespace Liuv\Larapix\ValueObjects;
 
-
 class Refund implements \JsonSerializable
 {
     private $transactionEndToEndId;
@@ -12,11 +11,10 @@ class Refund implements \JsonSerializable
     private $value;
 
     public function __construct(
-        string $correlationId, 
-        string $transactionEndToEndId, 
+        string $correlationId,
+        string $transactionEndToEndId,
         int $value
-    )
-    {
+    ) {
         $this->corretionId = $correlationId;
         $this->transactionEndToEndId = $transactionEndToEndId;
         $this->value = $value;

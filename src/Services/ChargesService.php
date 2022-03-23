@@ -25,7 +25,7 @@ class ChargesService implements ChargesContract
 
     public function findById(string $id): array
     {
-        $uri = sprintf(self::BASE_API . '/charge/%s',  $id);
+        $uri = sprintf(self::BASE_API . '/charge/%s', $id);
         try {
             $response = $this->client->get($uri);
         } catch (ClientException $exception) {
