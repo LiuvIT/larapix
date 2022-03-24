@@ -7,7 +7,7 @@ use GuzzleHttp\Exception\ClientException;
 use Liuv\Larapix\Contracts\Features\RefundsContract;
 use Liuv\Larapix\ValueObjects\Refund;
 
-class RefundsService implements RefundsContract
+class RefundsService extends BaseService implements RefundsContract
 {
     const BASE_API = 'https://api.openpix.com.br/api/openpix/v1';
 
@@ -25,7 +25,7 @@ class RefundsService implements RefundsContract
 
         $response = $this->client->get($uri);
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 
     public function findAll(array $parameters = []): array
@@ -34,7 +34,7 @@ class RefundsService implements RefundsContract
 
         $response = $this->client->get($uri);
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 
     public function create(Refund $refund): array
@@ -50,6 +50,6 @@ class RefundsService implements RefundsContract
         ]);
         // TODO: decide how to differentiate any type of error
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 }

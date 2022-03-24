@@ -9,7 +9,7 @@ use Liuv\Larapix\Exceptions\ChargeAlreadyCreatedException;
 use Liuv\Larapix\Exceptions\ChargeNotFoundException;
 use Liuv\Larapix\ValueObjects\Charge;
 
-class ChargesService implements ChargesContract
+class ChargesService extends BaseService implements ChargesContract
 {
     const BASE_API = 'https://api.openpix.com.br/api/openpix/v1';
     /**
@@ -35,7 +35,7 @@ class ChargesService implements ChargesContract
             );
         }
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 
     public function findAll(array $params = []): array
@@ -43,7 +43,7 @@ class ChargesService implements ChargesContract
         $uri = self::BASE_API . '/charge';
         $response = $this->client->get($uri);
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 
     public function create(Charge $charge): array
@@ -65,6 +65,6 @@ class ChargesService implements ChargesContract
             );
         }
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 }
