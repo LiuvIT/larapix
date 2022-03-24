@@ -2,7 +2,6 @@
 
 namespace Liuv\Larapix\ValueObjects;
 
-
 class Customer implements \JsonSerializable
 {
     /**

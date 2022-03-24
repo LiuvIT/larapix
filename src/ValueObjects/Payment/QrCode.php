@@ -2,7 +2,6 @@
 
 namespace Liuv\Larapix\ValueObjects\Payment;
 
-
 use JsonSerializable;
 
 class QrCode implements JsonSerializable

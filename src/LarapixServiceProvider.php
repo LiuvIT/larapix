@@ -12,7 +12,7 @@ class LarapixServiceProvider extends ServiceProvider
     public function boot()
     {
         $this->publishes([
-            __DIR__.'/../config/larapix.php' => config_path('larapix.php'),
+            __DIR__ . '/../config/larapix.php' => config_path('larapix.php'),
         ], 'config');
     }
 
