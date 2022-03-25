@@ -7,7 +7,7 @@ use Liuv\Larapix\Contracts\Features\PaymentsContract;
 use Liuv\Larapix\ValueObjects\Payment\Pix;
 use Liuv\Larapix\ValueObjects\Payment\QrCode;
 
-class PaymentsService implements PaymentsContract
+class PaymentsService extends BaseService implements PaymentsContract
 {
     const BASE_API = 'https://api.openpix.com.br/api/openpix/v1/pay';
     /**
@@ -32,7 +32,7 @@ class PaymentsService implements PaymentsContract
         ]);
         // TODO: decide how to differentiate any type of error
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 
     public function initQrCodePayment(QrCode $qrCode): array
@@ -47,7 +47,7 @@ class PaymentsService implements PaymentsContract
         ]);
         // TODO: decide how to differentiate any type of error
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 
     public function confirmPayment(string $paymentCorrelationId): array
@@ -64,6 +64,6 @@ class PaymentsService implements PaymentsContract
         ]);
         // TODO: decide how to differentiate any type of error
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 }

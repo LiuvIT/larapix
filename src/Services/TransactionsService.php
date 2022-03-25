@@ -5,7 +5,7 @@ namespace Liuv\Larapix\Services;
 use GuzzleHttp\Client;
 use Liuv\Larapix\Contracts\Features\TransactionContract;
 
-class TransactionsService implements TransactionContract
+class TransactionsService extends BaseService implements TransactionContract
 {
     const BASE_API = 'https://api.openpix.com.br/api/openpix/v1';
     /**
@@ -26,7 +26,7 @@ class TransactionsService implements TransactionContract
         );
         $response = $this->client->get($uri);
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 
     public function findAll(array $parameters = []): array
@@ -35,6 +35,6 @@ class TransactionsService implements TransactionContract
 
         $response = $this->client->get($uri);
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 }
