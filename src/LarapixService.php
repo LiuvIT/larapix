@@ -4,12 +4,14 @@ namespace Liuv\Larapix;
 
 use GuzzleHttp\Client;
 use Liuv\Larapix\Contracts\Features\ChargesContract;
+use Liuv\Larapix\Contracts\Features\CustomersContract;
 use Liuv\Larapix\Contracts\Features\PaymentsContract;
 use Liuv\Larapix\Contracts\Features\RefundsContract;
 use Liuv\Larapix\Contracts\Features\TransactionContract;
 use Liuv\Larapix\Contracts\Features\WebhooksContract;
 use Liuv\Larapix\Contracts\LarapixContract;
 use Liuv\Larapix\Services\ChargesService;
+use Liuv\Larapix\Services\CustomersService;
 use Liuv\Larapix\Services\PaymentsService;
 use Liuv\Larapix\Services\RefundsService;
 use Liuv\Larapix\Services\TransactionsService;
@@ -50,5 +52,10 @@ class LarapixService implements LarapixContract
     public function webhooks(): WebhooksContract
     {
         return new WebhooksService($this->client);
+    }
+
+    public function customers(): CustomersContract
+    {
+        return new CustomersService($this->client);
     }
 }
