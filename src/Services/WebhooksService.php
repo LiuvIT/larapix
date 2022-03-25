@@ -6,7 +6,7 @@ use GuzzleHttp\Client;
 use Liuv\Larapix\Contracts\Features\WebhooksContract;
 use Liuv\Larapix\ValueObjects\Webhook;
 
-class WebhooksService implements WebhooksContract
+class WebhooksService extends BaseService implements WebhooksContract
 {
     const BASE_API = 'https://api.openpix.com.br/api/openpix/v1';
     /**
@@ -31,7 +31,7 @@ class WebhooksService implements WebhooksContract
         ]);
         // TODO: decide how to differentiate any type of error
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 
     public function findAll(array $parameters = []): array
@@ -40,7 +40,7 @@ class WebhooksService implements WebhooksContract
 
         $response = $this->client->get($uri);
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 
     public function delete(string $webhookId): array
@@ -48,6 +48,6 @@ class WebhooksService implements WebhooksContract
         $uri = sprintf(self::BASE_API . '/webhook/%s', $webhookId);
         $response = $this->client->delete($uri);
 
-        return json_decode($response->getBody(), true);
+        return $this->success($response->getBody());
     }
 }
