@@ -5,6 +5,7 @@ namespace Liuv\Tests;
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
 use Liuv\Larapix\Contracts\Features\ChargesContract;
+use Liuv\Larapix\Contracts\Features\CustomersContract;
 use Liuv\Larapix\Contracts\Features\PaymentsContract;
 use Liuv\Larapix\Contracts\Features\RefundsContract;
 use Liuv\Larapix\Contracts\Features\TransactionContract;
@@ -56,5 +57,11 @@ class LarapixServiceTest extends TestCase
     {
         $this->assertInstanceOf(LarapixContract::class, $this->service);
         $this->assertInstanceOf(WebhooksContract::class, $this->service->webhooks());
+    }
+
+    public function test_larapix_customers_function()
+    {
+        $this->assertInstanceOf(LarapixContract::class, $this->service);
+        $this->assertInstanceOf(CustomersContract::class, $this->service->customers());
     }
 }
