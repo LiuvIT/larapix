@@ -6,8 +6,7 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Liuv\Larapix\Services\RefundsService;
-use Liuv\Larapix\Services\TransactionsService;
+use Liuv\Larapix\Transaction\Services\TransactionsService;
 use PHPUnit\Framework\TestCase;
 
 class TransactionsServiceTest extends TestCase

@@ -6,10 +6,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-
-use Liuv\Larapix\Contracts\Features\RefundsContract;
-use Liuv\Larapix\Services\RefundsService;
-use Liuv\Larapix\ValueObjects\Charge;
+use Liuv\Larapix\Refunds\Contracts\RefundsContract;
+use Liuv\Larapix\Refunds\Services\RefundsService;
 use PHPUnit\Framework\TestCase;
 
 class RefundServiceTest extends TestCase

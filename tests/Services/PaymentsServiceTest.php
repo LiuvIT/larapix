@@ -6,10 +6,10 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Liuv\Larapix\Contracts\Features\PaymentsContract;
-use Liuv\Larapix\Services\PaymentsService;
-use Liuv\Larapix\ValueObjects\Payment\Pix;
-use Liuv\Larapix\ValueObjects\Payment\QrCode;
+use Liuv\Larapix\Payments\Contracts\PaymentsContract;
+use Liuv\Larapix\Payments\Pix;
+use Liuv\Larapix\Payments\QrCode;
+use Liuv\Larapix\Payments\Services\PaymentsService;
 use PHPUnit\Framework\TestCase;
 
 class PaymentsServiceTest extends TestCase
