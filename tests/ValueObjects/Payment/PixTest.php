@@ -2,8 +2,8 @@
 
 namespace Liuv\Tests\ValueObjects\Payment;
 
-use Liuv\Larapix\Exceptions\PaymentMethodNotAcceptedException;
-use Liuv\Larapix\ValueObjects\Payment\Pix;
+use Liuv\Larapix\Payments\Exceptions\PaymentMethodNotAcceptedException;
+use Liuv\Larapix\Payments\Pix;
 use PHPUnit\Framework\TestCase;
 
 class PixTest extends TestCase

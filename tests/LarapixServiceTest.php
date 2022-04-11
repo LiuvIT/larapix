@@ -4,14 +4,14 @@ namespace Liuv\Tests;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\ClientInterface;
-use Liuv\Larapix\Contracts\Features\ChargesContract;
-use Liuv\Larapix\Contracts\Features\CustomersContract;
-use Liuv\Larapix\Contracts\Features\PaymentsContract;
-use Liuv\Larapix\Contracts\Features\RefundsContract;
-use Liuv\Larapix\Contracts\Features\TransactionContract;
-use Liuv\Larapix\Contracts\Features\WebhooksContract;
-use Liuv\Larapix\Contracts\LarapixContract;
-use Liuv\Larapix\LarapixService;
+use Liuv\Larapix\Charges\Contracts\ChargeContract;
+use Liuv\Larapix\Core\LarapixContract;
+use Liuv\Larapix\Core\LarapixService;
+use Liuv\Larapix\Customers\Contracts\CustomerContract;
+use Liuv\Larapix\Payments\Contracts\PaymentsContract;
+use Liuv\Larapix\Refunds\Contracts\RefundsContract;
+use Liuv\Larapix\Transaction\Contracts\TransactionContract;
+use Liuv\Larapix\Webhooks\Contracts\WebhooksContract;
 use PHPUnit\Framework\TestCase;
 
 class LarapixServiceTest extends TestCase
@@ -32,7 +32,7 @@ class LarapixServiceTest extends TestCase
     public function test_larapix_charge_function()
     {
         $this->assertInstanceOf(LarapixContract::class, $this->service);
-        $this->assertInstanceOf(ChargesContract::class, $this->service->charges());
+        $this->assertInstanceOf(ChargeContract::class, $this->service->charges());
     }
 
     public function test_larapix_refund_function()
@@ -62,6 +62,6 @@ class LarapixServiceTest extends TestCase
     public function test_larapix_customers_function()
     {
         $this->assertInstanceOf(LarapixContract::class, $this->service);
-        $this->assertInstanceOf(CustomersContract::class, $this->service->customers());
+        $this->assertInstanceOf(CustomerContract::class, $this->service->customers());
     }
 }

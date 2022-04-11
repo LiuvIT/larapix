@@ -6,8 +6,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Liuv\Larapix\Services\CustomersService;
-use Liuv\Larapix\ValueObjects\Customer;
+use Liuv\Larapix\Customers\Customer;
+use Liuv\Larapix\Customers\Services\CustomerService;
 use PHPUnit\Framework\TestCase;
 
 class CustomersServiceTest extends TestCase
@@ -19,7 +19,7 @@ class CustomersServiceTest extends TestCase
         $handlerStack = HandlerStack::create($mock);
         $client = new Client(['handler' => $handlerStack]);
         $id = 'nvm';
-        $service = new CustomersService($client);
+        $service = new CustomerService($client);
 
         // Act
         $actual = $service->findById($id);
@@ -35,7 +35,7 @@ class CustomersServiceTest extends TestCase
         $handlerStack = HandlerStack::create($mock);
         $client = new Client(['handler' => $handlerStack]);
         $parameters = [];
-        $service = new CustomersService($client);
+        $service = new CustomerService($client);
 
         // Act
         $actual = $service->findAll($parameters);
@@ -50,7 +50,7 @@ class CustomersServiceTest extends TestCase
         $mock = new MockHandler([new Response(200, [], json_encode($this->expectedCreatedObject()))]);
         $handlerStack = HandlerStack::create($mock);
         $client = new Client(['handler' => $handlerStack]);
-        $service = new CustomersService($client);
+        $service = new CustomerService($client);
         $charge = new Customer(
             'danielhe4rt',
             'hey@danielheart.dev',

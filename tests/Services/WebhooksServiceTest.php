@@ -6,9 +6,8 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Liuv\Larapix\Services\ChargesService;
-use Liuv\Larapix\Services\WebhooksService;
-use Liuv\Larapix\ValueObjects\Webhook;
+use Liuv\Larapix\Webhooks\Services\WebhooksService;
+use Liuv\Larapix\Webhooks\Webhook;
 use PHPUnit\Framework\TestCase;
 
 class WebhooksServiceTest extends TestCase

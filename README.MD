@@ -16,9 +16,9 @@ SDK.
 - Mantido pela comunidade LaravelBR e pela LiuvIT.
 
 ```php
-$service = new \Liuv\Larapix\LarapixService();
+$service = new \Liuv\Larapix\Core\LarapixService();
 
-$charge = new \Liuv\Larapix\ValueObjects\Charge(
+$charge = new \Liuv\Larapix\Charges\Charge(
     'correlatedId', // ID used to track on your app
     1000 // Value to charge in cents (10,00)
 );

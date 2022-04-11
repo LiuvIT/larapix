@@ -6,10 +6,9 @@ use GuzzleHttp\Client;
 use GuzzleHttp\Handler\MockHandler;
 use GuzzleHttp\HandlerStack;
 use GuzzleHttp\Psr7\Response;
-use Liuv\Larapix\Contracts\Features\ChargesContract;
-use Liuv\Larapix\Contracts\LarapixContract;
-use Liuv\Larapix\Services\ChargesService;
-use Liuv\Larapix\ValueObjects\Charge;
+use Liuv\Larapix\Charges\Charge;
+use Liuv\Larapix\Charges\Contracts\ChargeContract;
+use Liuv\Larapix\Charges\Services\ChargeService;
 use PHPUnit\Framework\TestCase;
 
 class ChargesServiceTest extends TestCase
@@ -23,7 +22,7 @@ class ChargesServiceTest extends TestCase
 
     public function test_charges_contract()
     {
-        $this->assertInstanceOf(ChargesContract::class, new ChargesService(new Client()));
+        $this->assertInstanceOf(ChargeContract::class, new ChargeService(new Client()));
     }
 
     public function test_fetch_charge_by_id()
@@ -33,7 +32,7 @@ class ChargesServiceTest extends TestCase
         $handlerStack = HandlerStack::create($mock);
         $client = new Client(['handler' => $handlerStack]);
         $id = 'artur-me-da-um-aumento';
-        $this->service = new ChargesService($client);
+        $this->service = new ChargeService($client);
 
         // Act
         $actual = $this->service->findById($id);
@@ -49,7 +48,7 @@ class ChargesServiceTest extends TestCase
         $handlerStack = HandlerStack::create($mock);
         $client = new Client(['handler' => $handlerStack]);
         $parameters = [];
-        $this->service = new ChargesService($client);
+        $this->service = new ChargeService($client);
 
         // Act
         $actual = $this->service->findAll($parameters);
@@ -64,7 +63,7 @@ class ChargesServiceTest extends TestCase
         $mock = new MockHandler([new Response(200, [], json_encode($this->expectedCreatedChargeObject()))]);
         $handlerStack = HandlerStack::create($mock);
         $client = new Client(['handler' => $handlerStack]);
-        $this->service = new ChargesService($client);
+        $this->service = new ChargeService($client);
         $charge = new Charge('artur-me-da-um-aumento', 500000);
         // Act
         $actual = $this->service->create($charge);
